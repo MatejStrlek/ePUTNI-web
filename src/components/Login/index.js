@@ -24,7 +24,7 @@ const Login = ({ setIsAuthenticated }) => {
 
           Swal.fire({
             icon: 'success',
-            title: 'Successfully logged in!',
+            title: 'Uspješna prijava!',
             showConfirmButton: false,
             timer: 1500,
           });
@@ -40,8 +40,8 @@ const Login = ({ setIsAuthenticated }) => {
         willClose: () => {
           Swal.fire({
             icon: 'error',
-            title: 'Error!',
-            text: 'Incorrect email or password.',
+            title: 'Greška!',
+            text: 'Neuspješna prijava.',
             showConfirmButton: true,
           });
         },
@@ -52,26 +52,26 @@ const Login = ({ setIsAuthenticated }) => {
   return (
     <div className="small-container">
       <form onSubmit={handleLogin}>
-        <h1>Admin Login</h1>
+        <h1>Prijava u ePUTNI web aplikaciju</h1>
         <label htmlFor="email">Email</label>
         <input
           id="email"
           type="email"
           name="email"
-          placeholder="admin@example.com"
+          placeholder="john.doe@estudent.hr"
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Šifra</label>
         <input
           id="password"
           type="password"
           name="password"
-          placeholder="qwerty"
+          placeholder="šifra"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <input style={{ marginTop: '12px' }} type="submit" value="Login" />
+        <input style={{ marginTop: '12px' }} type="submit" value="Prijava" />
       </form>
     </div>
   );

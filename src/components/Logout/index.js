@@ -5,10 +5,11 @@ const Logout = ({ setIsAuthenticated }) => {
   const handleLogout = () => {
     Swal.fire({
       icon: 'question',
-      title: 'Logging Out',
-      text: 'Are you sure you want to log out?',
+      title: 'Odjava',
+      text: 'Jeste li sigurni da se želite odjaviti?',
       showCancelButton: true,
-      confirmButtonText: 'Yes',
+      confirmButtonText: 'Da',
+      cancelButtonText: 'Ne'
     }).then(result => {
       if (result.value) {
         Swal.fire({
@@ -18,7 +19,7 @@ const Logout = ({ setIsAuthenticated }) => {
             Swal.showLoading();
           },
           willClose: () => {
-            localStorage.setItem('is_authenticated', false);
+            localStorage.setItem('is_authenticated', 'false');
             setIsAuthenticated(false);
           },
         });
@@ -32,7 +33,7 @@ const Logout = ({ setIsAuthenticated }) => {
       className="muted-button"
       onClick={handleLogout}
     >
-      Logout
+      Odjava
     </button>
   );
 };
