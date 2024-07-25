@@ -10,9 +10,8 @@ const Logout = ({ setIsAuthenticated }) => {
         icon: 'question',
         title: 'Odjava',
         text: 'Jeste li sigurni da se želite odjaviti?',
-        showCancelButton: true,
-        confirmButtonText: 'Da',
-        cancelButtonText: 'Ne'
+        showCancelButton: false,
+        confirmButtonText: 'Da'
       }).then(result => {
         if (result.value) {
           Swal.fire({
