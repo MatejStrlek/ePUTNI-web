@@ -1,7 +1,6 @@
 .card {
   border: 2px solid #c5272f;
-  border-radius: 8px;
-  transition: border-color 0.3s ease;
+  border-radius: 10px;
 }
 
 .card-body {

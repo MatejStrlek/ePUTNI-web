@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Table from './Table';
 import WarrantDetails from './WarrantDetails';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebaseconfig.js';
 
 const Dashboard = ({ setIsAuthenticated }) => {
@@ -51,12 +51,25 @@ const Dashboard = ({ setIsAuthenticated }) => {
     setIsViewing(true);
   };
 
+  const handleAccept = async (warrantId) => {
+    const warrantRef = doc(db, 'warrants', warrantId);
+    await updateDoc(warrantRef, { checkedByFinanceTeam: true });
+    
+    setWarrants((prevWarrants) =>
+      prevWarrants.map((warrant) =>
+        warrant.id === warrantId
+          ? { ...warrant, checkedByFinanceTeam: true }
+          : warrant
+      )
+    );
+  };
+
   return (
     <div className="container">
       {!isViewing && (
         <>
           <Header setIsAuthenticated={setIsAuthenticated} />
-          <Table warrants={warrants} handleView={handleView} />
+          <Table warrants={warrants} handleView={handleView} handleAccept={handleAccept} />
         </>
       )}
       {isViewing && (

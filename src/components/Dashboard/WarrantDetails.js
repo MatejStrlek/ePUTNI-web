@@ -6,7 +6,7 @@ import './warrantDetails.css';
 const WarrantDetails = ({ warrant, setIsViewing }) => {
   const startTime = TimeUtils.millsToReadableDate(warrant.startTime);
   const endTime = warrant.endTime ? TimeUtils.millsToReadableDate(warrant.endTime) : 'Nije završen put';
-  console.log(warrant);
+  /*console.log(warrant);*/
 
   return (
     <div className="container mt-4">
