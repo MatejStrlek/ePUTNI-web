@@ -7,7 +7,6 @@ import { db } from '../../firebaseconfig.js';
 
 const Dashboard = ({ setIsAuthenticated }) => {
   const [warrants, setWarrants] = useState([]);
-  const [users, setUsers] = useState([]);
   const [isViewing, setIsViewing] = useState(false);
   const [selectedWarrant, setSelectedWarrant] = useState(null);
 
@@ -16,7 +15,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
       const userData = await getDocs(collection(db, 'users'));
       const warrantData = await getDocs(collection(db, 'warrants'));
       const vehiclesData = await getDocs(collection(db, 'vehicles'))
-      
+
       const usersMap = {};
       userData.docs.forEach((doc) => {
         usersMap[doc.id] = doc.data().displayName;
@@ -25,7 +24,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
       const vehiclesMap = {};
       vehiclesData.docs.forEach((doc) => {
         vehiclesMap[doc.id] = {
-          model: doc.data().vehicleModel,
+          vehicleModel: doc.data().vehicleModel,
           licensePlate: doc.data().licensePlate
         };
       });
@@ -34,8 +33,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
         return {
           ...doc.data(),
           id: doc.id,
-          userName: usersMap[doc.data().userId], 
-          model: vehiclesMap[doc.data().vehicleId]?.vehicleModel,
+          userName: usersMap[doc.data().userId],
+          vehicleModel: vehiclesMap[doc.data().vehicleId]?.vehicleModel,
           licensePlate: vehiclesMap[doc.data().vehicleId]?.licensePlate
         };
       });
@@ -61,8 +60,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
         </>
       )}
       {isViewing && (
-        <WarrantDetails 
-          warrant={selectedWarrant} 
+        <WarrantDetails
+          warrant={selectedWarrant}
           setIsViewing={setIsViewing}
         />
       )}
