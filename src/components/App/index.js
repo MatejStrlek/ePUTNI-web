@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 import Login from '../Login';
 import Dashboard from '../Dashboard';
@@ -17,6 +18,7 @@ const App = () => {
       ) : (
         <Login setIsAuthenticated={setIsAuthenticated} />
       )}
+      <SpeedInsights />
     </>
   );
 };
