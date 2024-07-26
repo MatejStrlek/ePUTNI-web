@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Table from './Table';
+import Filter from './Filter';
 import WarrantDetails from './WarrantDetails';
 import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebaseconfig.js';
 
 const Dashboard = ({ setIsAuthenticated }) => {
   const [warrants, setWarrants] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [filteredWarrants, setFilteredWarrants] = useState([]);
   const [isViewing, setIsViewing] = useState(false);
   const [selectedWarrant, setSelectedWarrant] = useState(null);
 
@@ -17,8 +20,9 @@ const Dashboard = ({ setIsAuthenticated }) => {
       const vehiclesData = await getDocs(collection(db, 'vehicles'))
 
       const usersMap = {};
-      userData.docs.forEach((doc) => {
+      const userArr = userData.docs.map((doc) => {
         usersMap[doc.id] = doc.data().displayName;
+        return { ...doc.data(), id: doc.id };
       });
 
       const vehiclesMap = {};
@@ -29,17 +33,17 @@ const Dashboard = ({ setIsAuthenticated }) => {
         };
       });
 
-      const warrants = warrantData.docs.map((doc) => {
-        return {
-          ...doc.data(),
-          id: doc.id,
-          userName: usersMap[doc.data().userId],
-          vehicleModel: vehiclesMap[doc.data().vehicleId]?.vehicleModel,
-          licensePlate: vehiclesMap[doc.data().vehicleId]?.licensePlate
-        };
-      });
+      const warrantsArr = warrantData.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+        userName: usersMap[doc.data().userId],
+        vehicleModel: vehiclesMap[doc.data().vehicleId]?.vehicleModel,
+        licensePlate: vehiclesMap[doc.data().vehicleId]?.licensePlate,
+      }));
 
-      setWarrants(warrants);
+      setWarrants(warrantsArr);
+      setUsers(userArr);
+      setFilteredWarrants(warrantsArr);
     };
 
     getData();
@@ -62,6 +66,22 @@ const Dashboard = ({ setIsAuthenticated }) => {
           : warrant
       )
     );
+    setFilteredWarrants((prevWarrants) =>
+      prevWarrants.map((warrant) =>
+        warrant.id === warrantId
+          ? { ...warrant, checkedByFinanceTeam: true }
+          : warrant
+      )
+    );
+  };
+
+  const handleFilter = (userId) => {
+    if (userId === '') {
+      setFilteredWarrants(warrants);
+    } else {
+      const filtered = warrants.filter(warrant => warrant.userId === userId);
+      setFilteredWarrants(filtered);
+    }
   };
 
   return (
@@ -69,7 +89,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
       {!isViewing && (
         <>
           <Header setIsAuthenticated={setIsAuthenticated} />
-          <Table warrants={warrants} handleView={handleView} handleAccept={handleAccept} />
+          <Filter users={users} onFilter={handleFilter} />
+          <Table warrants={filteredWarrants} handleView={handleView} handleAccept={handleAccept} />
         </>
       )}
       {isViewing && (

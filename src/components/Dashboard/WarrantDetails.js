@@ -21,6 +21,7 @@ const WarrantDetails = ({ warrant, setIsViewing }) => {
               <p className="card-text"><strong>Destinacija:</strong> {warrant.endCity}</p>
               <p className="card-text"><strong>Zadatak/opis puta:</strong> {warrant.description}</p>
               <p className="card-text"><strong>Početno stanje brojila:</strong> {warrant.startKilometers}</p>
+              <p className="card-text"><strong>Nalog potvrđen?</strong> {warrant.checkedByFinanceTeam ? 'Da' : 'Ne'}</p>
             </div>
             <div className="col-md-6">
               <p className="card-text"><strong>Model vozila:</strong> {warrant.vehicleModel}</p>
