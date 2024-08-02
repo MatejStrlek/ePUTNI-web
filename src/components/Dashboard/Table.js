@@ -35,7 +35,17 @@ const Table = ({ warrants, handleView, handleAccept }) => {
         <tbody>
           {warrants.map((warrant) => (
             <tr key={warrant.id}>
-              <td>{warrant.userName}</td>
+              <td>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <img
+                    src={warrant.userPhotoUrl}
+                    alt={warrant.userName}
+                    onError={(e) => { e.target.onerror = null; e.target.src = process.env.PUBLIC_URL + '/deault-profile.png'; }}
+                    style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '15px' }}
+                  />
+                  {warrant.userName}
+                </div>
+              </td>
               <td>{warrant.startCity}</td>
               <td>{warrant.endCity}</td>
               <td>{warrant.finished ? 'Da' : 'Ne'}</td>

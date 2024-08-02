@@ -21,7 +21,10 @@ const Dashboard = ({ setIsAuthenticated }) => {
 
       const usersMap = {};
       const userArr = userData.docs.map((doc) => {
-        usersMap[doc.id] = doc.data().displayName;
+        usersMap[doc.id] = {
+          displayName: doc.data().displayName,
+          photoUrl: doc.data().photoUrl
+        };
         return { ...doc.data(), id: doc.id };
       });
 
@@ -33,13 +36,17 @@ const Dashboard = ({ setIsAuthenticated }) => {
         };
       });
 
-      const warrantsArr = warrantData.docs.map((doc) => ({
+      const warrantsArr = warrantData.docs.map((doc) => {
+        const user = usersMap[doc.data().userId];
+        return {
         ...doc.data(),
         id: doc.id,
-        userName: usersMap[doc.data().userId],
+        userName: user.displayName,
+        userPhotoUrl: user.photoUrl,
         vehicleModel: vehiclesMap[doc.data().vehicleId]?.vehicleModel,
         licensePlate: vehiclesMap[doc.data().vehicleId]?.licensePlate,
-      }));
+        };
+      });
 
       setWarrants(warrantsArr);
       setUsers(userArr);
