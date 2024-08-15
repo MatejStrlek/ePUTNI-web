@@ -12,6 +12,7 @@ const Login = ({ setIsAuthenticated }) => {
     const auth = getAuth();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+
       Swal.fire({
         timer: 1500,
         showConfirmButton: false,

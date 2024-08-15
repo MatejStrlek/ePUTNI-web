@@ -1,12 +1,12 @@
 import React from 'react';
 import { TimeUtils } from '../../utils/TimeUtils';
 import FileLinks from '../Files/FileLinks';
+import generateWarrant from '../../utils/generateWarrant';
 import './warrantDetails.css';
 
 const WarrantDetails = ({ warrant, setIsViewing }) => {
   const startTime = TimeUtils.millsToReadableDate(warrant.startTime);
   const endTime = warrant.endTime ? TimeUtils.millsToReadableDate(warrant.endTime) : 'Nije završen put';
-  /*console.log(warrant);*/
 
   return (
     <div className="container mt-4">
@@ -35,6 +35,7 @@ const WarrantDetails = ({ warrant, setIsViewing }) => {
         </div>
       </div>
       <button className="btn btn-primary mt-4" onClick={() => setIsViewing(false)}>Natrag na listu</button>
+      <button className="btn btn-dark mt-4 float-end" onClick={() => generateWarrant(warrant)}>Preuzmi putni nalog</button>
     </div>
   );
 };

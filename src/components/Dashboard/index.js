@@ -39,12 +39,12 @@ const Dashboard = ({ setIsAuthenticated }) => {
       const warrantsArr = warrantData.docs.map((doc) => {
         const user = usersMap[doc.data().userId];
         return {
-        ...doc.data(),
-        id: doc.id,
-        userName: user.displayName,
-        userPhotoUrl: user.photoUrl,
-        vehicleModel: vehiclesMap[doc.data().vehicleId]?.vehicleModel,
-        licensePlate: vehiclesMap[doc.data().vehicleId]?.licensePlate,
+          ...doc.data(),
+          id: doc.id,
+          userName: user.displayName,
+          userPhotoUrl: user.photoUrl,
+          vehicleModel: vehiclesMap[doc.data().vehicleId]?.vehicleModel,
+          licensePlate: vehiclesMap[doc.data().vehicleId]?.licensePlate,
         };
       });
 
@@ -65,7 +65,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
   const handleAccept = async (warrantId) => {
     const warrantRef = doc(db, 'warrants', warrantId);
     await updateDoc(warrantRef, { checkedByFinanceTeam: true });
-    
+
     setWarrants((prevWarrants) =>
       prevWarrants.map((warrant) =>
         warrant.id === warrantId
