@@ -13,3 +13,10 @@
   background: gray;
   margin: 1.2rem 0;
 }
+
+.btn[disabled] {
+  cursor: not-allowed;
+  background-color: #d6d6d6;
+  color: #999999;
+  border-color: #cccccc;
+}

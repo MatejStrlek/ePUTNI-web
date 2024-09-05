@@ -38,7 +38,10 @@ const WarrantDetails = ({ warrant, setIsViewing }) => {
         </div>
       </div>
       <button className="btn btn-primary mt-4" onClick={() => setIsViewing(false)}>Natrag na listu</button>
-      <button className="btn btn-dark mt-4 float-end" onClick={() => generateWarrant(warrant)}>Preuzmi putni nalog</button>
+      <button className="btn btn-dark mt-4 float-end"
+      onClick={() => generateWarrant(warrant)}
+      disabled={!warrant.finished}
+      >Preuzmi putni nalog</button>
     </div>
   );
 };
