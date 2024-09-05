@@ -23,7 +23,9 @@ const Dashboard = ({ setIsAuthenticated }) => {
       const userArr = userData.docs.map((doc) => {
         usersMap[doc.id] = {
           displayName: doc.data().displayName,
-          photoUrl: doc.data().photoUrl
+          photoUrl: doc.data().photoUrl,
+          role: doc.data().role,
+          email: doc.data().email
         };
         return { ...doc.data(), id: doc.id };
       });
@@ -32,7 +34,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
       vehiclesData.docs.forEach((doc) => {
         vehiclesMap[doc.id] = {
           vehicleModel: doc.data().vehicleModel,
-          licensePlate: doc.data().licensePlate
+          licensePlate: doc.data().licensePlate,
+          vehicleType: doc.data().vehicleType
         };
       });
 
@@ -43,8 +46,13 @@ const Dashboard = ({ setIsAuthenticated }) => {
           id: doc.id,
           userName: user.displayName,
           userPhotoUrl: user.photoUrl,
+          email: user.email,
+          role: user.role,
           vehicleModel: vehiclesMap[doc.data().vehicleId]?.vehicleModel,
           licensePlate: vehiclesMap[doc.data().vehicleId]?.licensePlate,
+          vehicleType: vehiclesMap[doc.data().vehicleId]?.vehicleType == 'PRIVATE' 
+          ? 'osobno vozilo' 
+          : 'službeno vozilo'
         };
       });
 
