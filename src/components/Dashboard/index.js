@@ -50,7 +50,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           role: user.role,
           vehicleModel: vehiclesMap[doc.data().vehicleId]?.vehicleModel,
           licensePlate: vehiclesMap[doc.data().vehicleId]?.licensePlate,
-          vehicleType: vehiclesMap[doc.data().vehicleId]?.vehicleType == 'PRIVATE' 
+          vehicleType: vehiclesMap[doc.data().vehicleId]?.vehicleType === 'PRIVATE' 
           ? 'osobno vozilo' 
           : 'službeno vozilo'
         };
