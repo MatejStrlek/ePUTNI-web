@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# ePUTNI Web - Digital Travel Warrant Management System (Web Application)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About the Project
+**ePUTNI Web** is a web-based component of the **ePUTNI** system, a software solution designed to digitize and automate the travel warrant process for student association [eSTUDENT](https://www.estudent.hr). The web application enables the finance and accounting team to review, approve, and manage travel warrants submitted through the [mobile app - ePUTNI](https://github.com/MatejStrlek/ePUTNI).
 
-## Available Scripts
+This project was developed as part of a final thesis at **Algebra University** by **Matej Galić**, under the mentorship of **Danijel Kučak**.
 
-In the project directory, you can run:
+## Features
+- **Web Application for Finance Team**
+  - Secure login using Google Authentication
+  - Review and approve travel warrants
+  - View detailed warrant information and scanned receipts
+  - Filter and manage travel warrants by user
+  - Generate travel warrant reports in PDF format
 
-### `npm start`
+- **Cloud-based Backend**
+  - Real-time synchronization with mobile application data
+  - Secure authentication and data management
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Modules
+- **Authentication Module:** Handles user login via Google Authentication, ensuring only authorized users can access the system.
+- **Travel Warrant Review Module:** Allows finance team members to view and approve/reject submitted travel warrants.
+- **Receipt Management Module:** Displays receipts uploaded by mobile app users and enables their validation.
+- **Data Synchronization Module:** Ensures real-time updates between the mobile app and web application.
+- **PDF Generation Module:** Generates travel warrant reports for record-keeping and auditing.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Technologies Used
+- **Frontend:** React.js
+- **Backend:** Firebase Authentication, Firestore Database, Firebase Cloud Functions
+- **Development Tools:** Visual Studio Code
