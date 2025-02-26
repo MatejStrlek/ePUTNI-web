@@ -18,11 +18,11 @@ This project was developed as part of a final thesis at **Algebra University** b
   - Secure authentication and data management
 
 ## Modules
-- **Authentication Module:** Handles user login via Google Authentication, ensuring only authorized users can access the system.
-- **Travel Warrant Review Module:** Allows finance team members to view and approve/reject submitted travel warrants.
-- **Receipt Management Module:** Displays receipts uploaded by mobile app users and enables their validation.
-- **Data Synchronization Module:** Ensures real-time updates between the mobile app and web application.
-- **PDF Generation Module:** Generates travel warrant reports for record-keeping and auditing.
+- **Authentication Module:** Handles user login via Google Authentication, ensuring only authorized users can access the system
+- **Travel Warrant Review Module:** Allows finance team members to view and approve/reject submitted travel warrants
+- **Receipt Management Module:** Displays receipts uploaded by mobile app users and enables their validation
+- **Data Synchronization Module:** Ensures real-time updates between the mobile app and web application
+- **PDF Generation Module:** Generates travel warrant reports for record-keeping and auditing
 
 ## Technologies Used
 - **Frontend:** React.js
